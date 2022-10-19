@@ -2,6 +2,7 @@ name: "Hello .NET"
 
 on:
   workflow_dispatch:
+  push:
 
 env:
   PROJECT_PATH: Notes.Api.Test/Notes.Api.Test.csproj
