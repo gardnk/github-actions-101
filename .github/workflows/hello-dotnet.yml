@@ -27,3 +27,10 @@ jobs:
         run: "dotnet build $PROJECT_PATH --no-restore --configuration Release"
       - name: "Run tests"
         run: "dotnet test $PROJECT_PATH --no-build --configuration Release --logger trx"
+      - name: "Test report"
+        uses: "dorny/test-reporter@v1"
+        if: success() || failure()
+        with:
+          name: test-report
+          path: Notes.Api.Test/TestResults/*.trx
+          reporter: dotnet-trx
